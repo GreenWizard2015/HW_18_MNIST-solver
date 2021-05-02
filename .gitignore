@@ -4,3 +4,4 @@ __pycache__
 /.project
 /.settings
 TRASH_*.py
+/models
