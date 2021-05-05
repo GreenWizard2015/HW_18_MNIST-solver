@@ -1,0 +1,12 @@
+{
+  "ModelName": "tunable_V1",
+  "depth": 5,
+  "layer_0": 432,
+  "layer_1": 144,
+  "layer_2": 432,
+  "layer_3": 176,
+  "layer_4": 336,
+  "LReLuSlope": -0.1000000000000002,
+  "useBN": false,
+  "dropout": 0.4
+}

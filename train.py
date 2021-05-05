@@ -9,6 +9,7 @@ import tensorflow as tf
 import numpy as np
 import os
 from sklearn.metrics import confusion_matrix
+import TunableModels
 
 NB_EPOCH = 100
 BATCH_SIZE = 128
@@ -24,16 +25,12 @@ filepath = lambda *x: os.path.join(FOLDER, *x)
 
 MODELS = {}
 MODELS.update(baseline_models.baselineModels()) # include baselines
+MODELS.update(TunableModels.fromFolder(
+  os.path.join(os.path.dirname(__file__), 'tuner')
+))
 
 modelsAccuracy = dict()
-(X_train, Y_train), (X_test, Y_test) = MnistDataset.dataset()
-# split train into validation and train
-splitIndex = int(len(X_train) * VALIDATION_SPLIT)
-X_val = X_train[:splitIndex]
-Y_val = Y_train[:splitIndex]
-
-X_train = X_train[splitIndex:]
-Y_train = Y_train[splitIndex:]
+(X_train, Y_train), (X_test, Y_test), (X_val, Y_val) = MnistDataset.dataset(VALIDATION_SPLIT)
 #####
 for modelName, modelBuilder in MODELS.items():
   print('Start training model "%s"' % modelName)

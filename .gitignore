@@ -5,3 +5,6 @@ __pycache__
 /.settings
 TRASH_*.py
 /models
+/tuner/*
+!/tuner/
+!/tuner/*.json
